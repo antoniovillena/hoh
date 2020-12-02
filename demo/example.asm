@@ -22,45 +22,47 @@
       endm
         org     $8000
 
+        di
         ld      a, $50
         ld      bc, zxuno_port
         out     (c), a
         inc     b
         ld      a, $80
         out     (c), a
-        
+        tobp2
+        tobp0
         ld      hl, buffer
         ld      de, $4000
         ld      bc, $1800
         ldir
-        ld      b, 10
-delay1  halt
-        djnz    delay1
         tobp1
         ld      de, $4000
         ld      bc, $1800
         ldir
-        ld      b, 10
-delay2  halt
-        djnz    delay2
         tobp3
         ld      de, $4000
         ld      bc, $1800
         ldir
-        ld      b, 10
-delay3  halt
-        djnz    delay3
         tobp2
         ld      de, $4000
         ld      bc, $1800
         ldir
-        ld      b, 10
-        tobp0
+        tobp1
+        tobp3
+        ei
+        ld      b, c
+delay   halt
+        djnz    delay
         di
+        ld      a, $50
+        ld      bc, zxuno_port
+        out     (c), a
+        inc     b
+        xor     a
+        out     (c), a
         halt
 
 buffer: incbin  salida.bp0
         incbin  salida.bp1
         incbin  salida.bp3
         incbin  salida.bp2
-
