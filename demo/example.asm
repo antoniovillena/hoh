@@ -12,11 +12,11 @@
       endm
       macro tobp2
         xor     a
-        ld      b, $1f
+        ld      b, $7f
         out     (c), a
       endm
       macro tobp0
-        ld      b, $7f
+        ld      b, $1f
         out     (c), a
       endm
         org     $8000
