@@ -7,16 +7,17 @@
       endm
       macro tobp3
         ld      a, $04
-        ld      b, $1f
+        ld      bc, $1ffd
         out     (c), a
       endm
       macro tobp2
         xor     a
-        ld      b, $7f
+        ld      bc, $7ffd
         out     (c), a
       endm
       macro tobp0
-        ld      b, $1f
+        xor     a
+        ld      bc, $1ffd
         out     (c), a
       endm
         org     $8000
