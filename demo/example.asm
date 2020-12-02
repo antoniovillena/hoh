@@ -1,5 +1,13 @@
         output  example.bin
         define  zxuno_port      $fc3b
+      macro modePrism value
+        ld      a, $50
+        ld      bc, zxuno_port
+        out     (c), a
+        inc     b
+        ld      a, value<<7
+        out     (c), a
+      endm
       macro tobp1
         ld      a, $10
         ld      bc, $7ffd
@@ -23,43 +31,32 @@
         org     $8000
 
         di
-        ld      a, $50
-        ld      bc, zxuno_port
-        out     (c), a
-        inc     b
-        ld      a, $80
-        out     (c), a
+        modePrism 1
         tobp2
-        tobp0
+        tobp0   ; ROM0
         ld      hl, buffer
         ld      de, $4000
         ld      bc, $1800
         ldir
-        tobp1
+        tobp1   ; ROM1
         ld      de, $4000
         ld      bc, $1800
         ldir
-        tobp3
+        tobp3   ; ROM3
         ld      de, $4000
         ld      bc, $1800
         ldir
-        tobp2
+        tobp2   ; ROM2
         ld      de, $4000
         ld      bc, $1800
         ldir
-        tobp1
-        tobp3
+        tobp1   ; ROM3
         ei
         ld      b, c
 delay   halt
         djnz    delay
         di
-        ld      a, $50
-        ld      bc, zxuno_port
-        out     (c), a
-        inc     b
-        xor     a
-        out     (c), a
+        modePrism 0
         halt
 
 buffer: incbin  salida.bp0
