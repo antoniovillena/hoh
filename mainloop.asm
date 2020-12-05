@@ -58,7 +58,7 @@ Main:           LD      SP,$FFF4
 MainContinue:   CALL    PlayTune
                 CALL    InitContinue
         ;; Play the game from the start.
-MainStart:      CALL    CrownScreen
+MainStart:      CALL    $3000 ; CrownScreen
                 LD      A,$40
                 LD      (ObjFn36Val),A  ; TODO: ???
         ;; Called when entering a room.
