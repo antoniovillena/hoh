@@ -1,14 +1,15 @@
+        include define.asm
         output  loader.bin
         org     $5ccb
-        ld      de, $faac+final-aqui-1
+        ld      de, $ffff
         di
         defb    $de, $c0, $37, $0e, $8f, $39, $96 ; Basic de Paolo Ferraris
         ld      hl, final-1
         ld      bc, final-aqui
         lddr
-        ex      de, hl
+        jp      aqui-final
         jp      (hl)
-aqui    ld      de, $9fac
+aqui    ld      de, length
         ld      hl, $5b00
         call    $07f4
         jp      $7030
