@@ -1,0 +1,10 @@
+2x56 2240 (walls)
+3x56  672 bytes, 2 puertas
+3x32  384 bytes, 2 bichos
+3x24  7776 bytes, 54 sprites
+4x28  2688 bytes, 12 sprites
+2x24  384 bytes, 8 tramas (sin mascaras)
+1x8   360 bytes, 45 letras
+2x18  IMG_ColTop
+2x12  IMG_ColMid
+2x8   IMG_ColBottom
