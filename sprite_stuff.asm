@@ -27,7 +27,7 @@ CrownScreenCont:LD      A,(WorldMask)
         ;; Dislay the crowns you've won.
 ES_1:           CALL    CrownScreen
         ;; Then back to the normal display.
-                CALL    DrawBlacked
+                CALL    $3002 ; DrawBlacked
                 JP      RevealScreen    ; NB: Tail call
 
 ;; Just draw the crown screen and wait for a keypress

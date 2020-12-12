@@ -58,7 +58,7 @@ FinishRestore:	CALL	BuildRoomNoObj
 		DEFW	ReinitThing
 		CALL	SetCharFlags
 		CALL	GetScreenEdges
-		CALL	DrawBlacked
+		CALL	$3002 ; DrawBlacked
 		XOR	A
 		LD	(InSameRoom),A
 		JR	RevealScreen	; Tail call
@@ -79,7 +79,7 @@ ER2_1:          LD      (WorldIdSnd),A
                 OR      $40
                 LD      B,A
                 CALL    PlaySound       ; $40-$46 are world noises?
-ER2_2:          CALL    DrawBlacked
+ER2_2:          CALL    $3002 ; DrawBlacked
                 CALL    CharThing15
         ;; NB: Fall through
 

@@ -5,34 +5,6 @@
 ;;
 ;; Glues together all the individual source files
 ;;
-      macro modePrism value
-        ld      a, $50
-        ld      bc, $fc3b
-        out     (c), a
-        inc     b
-        ld      a, value<<7
-        out     (c), a
-      endm
-      macro tobp1
-        ld      a, $10
-        ld      bc, $7ffd
-        out     (c), a
-      endm
-      macro tobp3
-        ld      a, $04
-        ld      bc, $1ffd
-        out     (c), a
-      endm
-      macro tobp2
-        xor     a
-        ld      bc, $7ffd
-        out     (c), a
-      endm
-      macro tobp0
-        xor     a
-        ld      bc, $1ffd
-        out     (c), a
-      endm
 
     output hoh.bin
     org $5b00
